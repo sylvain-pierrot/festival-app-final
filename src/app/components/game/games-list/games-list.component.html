@@ -1,0 +1,45 @@
+<h1>Créer jeu</h1>
+<form [formGroup]="gameCreateGroup" (ngSubmit)="createGame()">
+  <label>Nom: <input type="text" formControlName="name" /></label>
+
+  <button type="submit" [disabled]="!gameCreateGroup.valid">Submit</button>
+</form>
+
+<h1>Jeux</h1>
+<p>nombre de jeux : {{ this.games?.length }}</p>
+
+<table *ngIf="games">
+  <thead>
+    <tr>
+      <th><strong>FestivalId</strong></th>
+
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Type</th>
+      <th>âge min</th>
+      <th>âge max</th>
+      <th>nombre de joueurs min</th>
+      <th>nombre de joueurs max</th>
+      <th>durée d'une partie</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games">
+      <td>
+        <strong>{{ game.festivalId }}</strong>
+      </td>
+      <td>{{ game.id }}</td>
+      <td>{{ game.name }}</td>
+      <td>{{ game.type }}</td>
+      <td>{{ game.agemin }}</td>
+      <td>{{ game.agemax }}</td>
+      <td>{{ game.numberofplayersmin }}</td>
+      <td>{{ game.numberofplayersmax }}</td>
+      <td>{{ game.durationofthegame }}</td>
+
+      <td><button (click)="emitGame(game)">SELECT</button></td>
+    </tr>
+  </tbody>
+</table>

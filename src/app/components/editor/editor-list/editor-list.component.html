@@ -1,0 +1,41 @@
+<h1>Créer éditeur</h1>
+<form [formGroup]="editorCreateGroup" (ngSubmit)="createEditor()">
+  <label
+    >Nom de société: <input type="text" formControlName="companyname"
+  /></label>
+  <label
+    >Contacts de la société:
+    <input type="text" formControlName="companycontacts"
+  /></label>
+
+  <button type="submit" [disabled]="!editorCreateGroup.valid">Submit</button>
+</form>
+
+<h1>Éditeurs</h1>
+<p>nombre de d'éditeurs : {{ this.editors?.length }}</p>
+
+<table *ngIf="editors">
+  <thead>
+    <tr>
+      <th><strong>FestivalId</strong></th>
+
+      <th>Id</th>
+      <th>Nom de société</th>
+      <th>Contacts de la société</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let editor of editors">
+      <td>
+        <strong>{{ editor.festivalId }}</strong>
+      </td>
+      <td>{{ editor.id }}</td>
+      <td>{{ editor.companyname }}</td>
+      <td>{{ editor.companycontacts }}</td>
+
+      <td><button (click)="emitEditor(editor)">SELECT</button></td>
+    </tr>
+  </tbody>
+</table>
+<p>end of table</p>

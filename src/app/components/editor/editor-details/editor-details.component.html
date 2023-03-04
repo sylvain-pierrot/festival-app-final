@@ -1,0 +1,14 @@
+<h1>Update festival</h1>
+<form [formGroup]="editorGroup" (ngSubmit)="validate()">
+  <label
+    >companyname: <input type="text" formControlName="companyname"
+  /></label>
+  <label
+    >companycontacts: <input type="text" formControlName="companycontacts"
+  /></label>
+
+  <button type="submit" [disabled]="!editorGroup.valid">Submit</button>
+</form>
+
+<h1>Delete</h1>
+<button (click)="delete()">DELETE</button>

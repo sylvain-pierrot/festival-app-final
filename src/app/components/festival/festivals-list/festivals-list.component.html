@@ -1,0 +1,45 @@
+<h1>Créer festival</h1>
+<form [formGroup]="festivalCreateGroup" (ngSubmit)="createFestival()">
+  <label>Name: <input type="text" formControlName="name" /></label>
+  <button type="submit" [disabled]="!festivalCreateGroup.valid">Submit</button>
+</form>
+
+<h1>Festivals</h1>
+<p>Nombre de festivals : {{ this.festivals?.length }}</p>
+
+<table *ngIf="festivals">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>tables</th>
+      <th>Prix Espace entrée</th>
+      <th>Prix espace salle</th>
+      <th>Prix Espace Buvette</th>
+      <th>m² entrée</th>
+      <th>m² salle</th>
+      <th>m² buvette</th>
+      <th># tables entrée</th>
+      <th># tables salle</th>
+      <th># tables buvette</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let festival of festivals">
+      <td>{{ festival.id }}</td>
+      <td>{{ festival.name }}</td>
+      <td>{{ festival.tableTotal }}</td>
+      <td>{{ festival.tableprice_1 | currency }}</td>
+      <td>{{ festival.tableprice_2 | currency }}</td>
+      <td>{{ festival.tableprice_3 | currency }}</td>
+      <td>{{ festival.sqmprice_1 | currency }}</td>
+      <td>{{ festival.sqmprice_2 | currency }}</td>
+      <td>{{ festival.sqmprice_3 | currency }}</td>
+      <td>{{ festival.tablemax_1 }}</td>
+      <td>{{ festival.tablemax_2 }}</td>
+      <td>{{ festival.tablemax_3 }}</td>
+      <td><button (click)="emitFestival(festival)">SELECT</button></td>
+    </tr>
+  </tbody>
+</table>

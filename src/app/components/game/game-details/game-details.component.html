@@ -1,0 +1,9 @@
+<h1>Update festival</h1>
+<form [formGroup]="gameGroup" (ngSubmit)="validate()">
+  <label>Nom: <input type="text" formControlName="name" /></label>
+
+  <button type="submit" [disabled]="!gameGroup.valid">Submit</button>
+</form>
+
+<h1>Delete</h1>
+<button (click)="delete()">DELETE</button>

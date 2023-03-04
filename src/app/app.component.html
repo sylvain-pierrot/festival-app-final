@@ -1,0 +1,31 @@
+<app-festivals-list
+  [festivals]="festivals | async"
+  (festivalSelected)="changeFestival($event)"
+></app-festivals-list>
+<app-message></app-message>
+<app-festival-details
+  *ngIf="festivalSelected"
+  [festival]="festivalSelected"
+></app-festival-details>
+<hr />
+<app-editor-list
+  *ngIf="festivalSelected && festivalSelected!.id"
+  [editors]="editors | async"
+  [festivalId]="festivalSelected!.id"
+  (editorSelected)="changeEditor($event)"
+></app-editor-list>
+<app-editor-details
+  *ngIf="festivalSelected && editorSelected"
+  [editor]="editorSelected"
+></app-editor-details>
+<hr />
+<app-games-list
+  *ngIf="festivalSelected && festivalSelected!.id"
+  [games]="games | async"
+  [festivalId]="festivalSelected!.id"
+  (gameSelected)="changeGame($event)"
+></app-games-list>
+<app-game-details
+  *ngIf="festivalSelected && gameSelected"
+  [game]="gameSelected"
+></app-game-details>
